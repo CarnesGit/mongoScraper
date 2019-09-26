@@ -29,14 +29,16 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
-
+mongoose.connect('mongodb:localhost/mongoHeadlines',{ useNewUrlParser: true });
+console.log("env variable", process.env.MONGODB_URI)
+// mongodb://localhost/mongoHeadlines
 // Routes
 
 // A GET route for scraping the echoJS website
 app.get('/scrape', function(req, res) {
   // First, we grab the body of the html with axios
   axios.get('https://www.foxnews.com/').then(function(response) {
+   
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     const $ = cheerio.load(response.data);
 
