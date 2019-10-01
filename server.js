@@ -8,14 +8,14 @@ var axios = require("axios");
 var exphbs = require("express-handlebars");
 var fs = require("fs");
 
-// Require all models
-const db = require('./models');
 
 const PORT = process.env.PORT || 3000;
 
 // Initialize Express
 const app = express();
 
+// Require all models
+const db = require('./models');
 //  Middleware 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
