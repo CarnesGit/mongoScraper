@@ -19,13 +19,9 @@ const db = require('./models');
 //  Middleware 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("public"));
-
+app.use(express.static(__dirname + '/public'));
 // Use morgan logger for logging requests
 app.use(logger('dev'));
-// Parse request body as JSON
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
